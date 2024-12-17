@@ -1,8 +1,9 @@
 module Poker.Core.HandRanking where
 
-import Poker.Core.Card
 import Data.Set (Set)
+import Poker.Core.Card
 
+-- Data type representing all possible poker hand rankings from highest to lowest
 data HandRanking
   = HighCard (Set Rank) -- List of ranks in descending order
   | Pair Rank (Set Rank) -- Pair rank and remaining cards in descending order
@@ -15,6 +16,7 @@ data HandRanking
   | StraightFlush Rank -- Highest card in the straight flush
   deriving (Eq, Ord)
 
+-- Show instance for pretty-printing hand rankings
 instance Show HandRanking where
   show (HighCard ranks) = "High Card: " ++ show ranks
   show (Pair p r) = "Pair of " ++ show p ++ " with " ++ show r

@@ -12,12 +12,15 @@ import Poker.State.BettingRoundState
 import Poker.State.GameState
 import Poker.State.RoundState
 
+-- | Handle a betting action by validating it's in turn and processing the action
 playBet :: Action -> PokerM ()
 playBet action = do
   betInTurn action
   playAction action
 
 -- TODO: check if the player is actually part of this game and throw a different error if this is the case
+
+-- | Validate that a bet is being made by the correct player in turn
 betInTurn :: Action -> PokerM ()
 betInTurn (Action {player = playerID}) = do
   currentPlayerID <- use (roundState . bettingState . bettingQueue) <&> PlayerQueue.viewFirstPlayer
@@ -25,13 +28,17 @@ betInTurn (Action {player = playerID}) = do
     then return ()
     else throwError (OutOfTurnBet playerID)
 
+-- | Process the actual betting action (Fold, Check, Call or Raise)
 playAction :: Action -> PokerM ()
 playAction (Action {action = Fold}) = do
+  -- Remove folded player from the queue
   roundState . bettingState . bettingQueue %= PlayerQueue.removeFirstPlayer
 playAction (Action {action = Check}) = do
+  -- Move to next player and decrement remaining bets
   roundState . bettingState . bettingQueue %= PlayerQueue.cycle
   roundState . bettingState . numBetsLeft %= (-) 1
 playAction (Action {action = Call, player = playerID}) = do
+  -- Calculate amount needed to call and process the payment
   pot <- preuse (pots . ix 0) >>= maybe (error "pot lookup error") return
   let currentBet = pot ^. Pot.currentBet
   let moneyInPot = Pot.getPlayerBet playerID pot
@@ -43,5 +50,6 @@ playAction (Action {action = Call, player = playerID}) = do
   pots . ix 0 %= Pot.addMoney amountToAdd playerID
   playAction (Action {action = Check, player = playerID})
 playAction (Action {action = Raise raiseAmount, player = playerID}) = do
+  -- Raise the current bet and then process as a call
   pots . ix 0 %= Pot.raiseCurrentBet raiseAmount
   playAction (Action {action = Call, player = playerID})
