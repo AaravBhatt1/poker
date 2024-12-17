@@ -75,7 +75,6 @@ library
                         , Poker.Core.Error
                         , Poker.Utils.HandRankingCalc
                         , Poker.Monad.PokerMonad
-                        , Poker.Utils.MonadUtils
                         , Poker.Core.PlayerID
                         , Poker.Logic.Deck
                         , Poker.Logic.Betting
