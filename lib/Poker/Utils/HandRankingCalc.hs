@@ -4,7 +4,6 @@ module Poker.Utils.HandRankingCalc where
 
 -- NOTE: Calc is short for calculator btw
 
-import Control.Applicative (Alternative (..))
 import Data.Map (Map)
 import Data.Map qualified as Map
 import Data.Maybe qualified as Maybe
@@ -16,16 +15,18 @@ import Poker.Core.HandRanking
 
 getHandRanking :: Hand -> HandRanking
 getHandRanking hand =
-  Maybe.fromJust $
-    isStraightFlush hand
-      <|> isOfAKind 4 hand
-      <|> isFullHouse hand
-      <|> isFlush hand
-      <|> isStraight hand
-      <|> isOfAKind 3 hand
-      <|> isTwoPair hand
-      <|> isOfAKind 2 hand
-      <|> isHighestCard hand
+  maximum $
+    Maybe.catMaybes
+      [ isStraightFlush hand,
+        isOfAKind 4 hand,
+        isFullHouse hand,
+        isFlush hand,
+        isStraight hand,
+        isOfAKind 3 hand,
+        isTwoPair hand,
+        isOfAKind 2 hand,
+        isHighestCard hand
+      ]
 
 type GetRanking = Hand -> Maybe HandRanking
 

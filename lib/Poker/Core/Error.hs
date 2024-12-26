@@ -9,3 +9,4 @@ data PokerError
   = InsufficientFunds PlayerID Money -- The player that has insufficient funds, and the amount of money they need
   | DeckDrawingError -- Error drawing cards from the deck
   | OutOfTurnBet PlayerID -- A player attempted to bet out of turn
+  | PlayerNotFound PlayerID -- A player ID that could not be found in the game

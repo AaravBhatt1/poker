@@ -1,8 +1,11 @@
 module Poker.Monad.PokerMonad where
 
-import Control.Monad.Except (ExceptT, runExceptT)
+import Control.Lens
+import Control.Monad.Except (ExceptT, runExceptT, throwError)
 import Control.Monad.State (StateT, runStateT)
 import Poker.Core.Error
+import Poker.Core.Player
+import Poker.Core.PlayerID
 import Poker.State.GameState
 
 -- | The main poker monad transformer stack. Combines StateT for game state management
@@ -23,3 +26,6 @@ evalPokerM action initialState = fmap fst <$> runPokerM action initialState
 -- result value.
 execPokerM :: PokerM a -> GameState -> IO (Either PokerError GameState)
 execPokerM action initialState = fmap snd <$> runPokerM action initialState
+
+getPlayer :: PlayerID -> PokerM Player
+getPlayer pid = preuse (players . ix pid) >>= maybe (throwError $ PlayerNotFound pid) return

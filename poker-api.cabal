@@ -78,6 +78,8 @@ library
                         , Poker.Core.PlayerID
                         , Poker.Logic.Deck
                         , Poker.Logic.Betting
+                        , Poker.Logic.Game
+                        , Poker.Logic.PlayerCards
 
     -- Modules included in this library but not exported.
     -- other-modules:
@@ -92,6 +94,11 @@ library
                     , mtl
                     , random-shuffle
                     , lens
+                    , uuid
+                    , uuid-types
+                    , network
+                    , monad-loops
+                    , stm
 
     -- Directories containing source files.
     hs-source-dirs:   lib
@@ -114,8 +121,9 @@ executable poker-api
 
     -- Other library packages from which modules are imported.
     build-depends:
-        base ^>=4.17.2.1,
-        poker-api
+        base ^>=4.17.2.1
+        , network
+        , poker-api
 
     -- Directories containing source files.
     hs-source-dirs:   app

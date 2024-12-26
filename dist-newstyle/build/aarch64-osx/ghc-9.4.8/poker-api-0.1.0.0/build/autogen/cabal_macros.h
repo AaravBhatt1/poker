@@ -40,6 +40,16 @@
   (major1) == 5 && (major2) <  3 || \
   (major1) == 5 && (major2) == 3 && (minor) <= 2)
 #endif /* MIN_VERSION_lens */
+/* package monad-loops-0.4.3 */
+#ifndef VERSION_monad_loops
+#define VERSION_monad_loops "0.4.3"
+#endif /* VERSION_monad_loops */
+#ifndef MIN_VERSION_monad_loops
+#define MIN_VERSION_monad_loops(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  4 || \
+  (major1) == 0 && (major2) == 4 && (minor) <= 3)
+#endif /* MIN_VERSION_monad_loops */
 /* package mtl-2.2.2 */
 #ifndef VERSION_mtl
 #define VERSION_mtl "2.2.2"
@@ -50,6 +60,16 @@
   (major1) == 2 && (major2) <  2 || \
   (major1) == 2 && (major2) == 2 && (minor) <= 2)
 #endif /* MIN_VERSION_mtl */
+/* package network-3.2.7.0 */
+#ifndef VERSION_network
+#define VERSION_network "3.2.7.0"
+#endif /* VERSION_network */
+#ifndef MIN_VERSION_network
+#define MIN_VERSION_network(major1,major2,minor) (\
+  (major1) <  3 || \
+  (major1) == 3 && (major2) <  2 || \
+  (major1) == 3 && (major2) == 2 && (minor) <= 7)
+#endif /* MIN_VERSION_network */
 /* package random-shuffle-0.0.4 */
 #ifndef VERSION_random_shuffle
 #define VERSION_random_shuffle "0.0.4"
@@ -60,6 +80,16 @@
   (major1) == 0 && (major2) <  0 || \
   (major1) == 0 && (major2) == 0 && (minor) <= 4)
 #endif /* MIN_VERSION_random_shuffle */
+/* package stm-2.5.1.0 */
+#ifndef VERSION_stm
+#define VERSION_stm "2.5.1.0"
+#endif /* VERSION_stm */
+#ifndef MIN_VERSION_stm
+#define MIN_VERSION_stm(major1,major2,minor) (\
+  (major1) <  2 || \
+  (major1) == 2 && (major2) <  5 || \
+  (major1) == 2 && (major2) == 5 && (minor) <= 1)
+#endif /* MIN_VERSION_stm */
 /* package text-2.0.2 */
 #ifndef VERSION_text
 #define VERSION_text "2.0.2"
@@ -70,6 +100,26 @@
   (major1) == 2 && (major2) <  0 || \
   (major1) == 2 && (major2) == 0 && (minor) <= 2)
 #endif /* MIN_VERSION_text */
+/* package uuid-1.3.16 */
+#ifndef VERSION_uuid
+#define VERSION_uuid "1.3.16"
+#endif /* VERSION_uuid */
+#ifndef MIN_VERSION_uuid
+#define MIN_VERSION_uuid(major1,major2,minor) (\
+  (major1) <  1 || \
+  (major1) == 1 && (major2) <  3 || \
+  (major1) == 1 && (major2) == 3 && (minor) <= 16)
+#endif /* MIN_VERSION_uuid */
+/* package uuid-types-1.0.6 */
+#ifndef VERSION_uuid_types
+#define VERSION_uuid_types "1.0.6"
+#endif /* VERSION_uuid_types */
+#ifndef MIN_VERSION_uuid_types
+#define MIN_VERSION_uuid_types(major1,major2,minor) (\
+  (major1) <  1 || \
+  (major1) == 1 && (major2) <  0 || \
+  (major1) == 1 && (major2) == 0 && (minor) <= 6)
+#endif /* MIN_VERSION_uuid_types */
 
 /* tool gcc-16.0.0 */
 #ifndef TOOL_VERSION_gcc

@@ -13,7 +13,7 @@ data ActionType
     Call
   | -- | Player increases the bet by the specified amount
     Raise Money
-  deriving (Eq)
+  deriving (Eq, Read, Show)
 
 -- | An action taken by a specific player
 data Action = Action

@@ -20,6 +20,16 @@
   (major1) == 4 && (major2) <  17 || \
   (major1) == 4 && (major2) == 17 && (minor) <= 2)
 #endif /* MIN_VERSION_base */
+/* package network-3.2.7.0 */
+#ifndef VERSION_network
+#define VERSION_network "3.2.7.0"
+#endif /* VERSION_network */
+#ifndef MIN_VERSION_network
+#define MIN_VERSION_network(major1,major2,minor) (\
+  (major1) <  3 || \
+  (major1) == 3 && (major2) <  2 || \
+  (major1) == 3 && (major2) == 2 && (minor) <= 7)
+#endif /* MIN_VERSION_network */
 /* package poker-api-0.1.0.0 */
 #ifndef VERSION_poker_api
 #define VERSION_poker_api "0.1.0.0"
